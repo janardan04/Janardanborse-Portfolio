@@ -1,0 +1,85 @@
+/* Custom Button Styles */
+.custom-button {
+    width: 100%;
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(109, 40, 217, 0.5);
+  }
+  
+  /* Animated background layer */
+  .custom-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(34, 211, 238, 0.2),
+      rgba(109, 40, 217, 0.2)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .custom-button:hover::before {
+    opacity: 1;
+  }
+  
+  /* Shine effect */
+  .custom-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    transform: skewX(-20deg);
+  }
+  
+  .custom-button:hover::after {
+    animation: shine 3s infinite;
+  }
+  
+  /* Icon animation */
+  .button-icon {
+    width: 20px;
+    height: 20px;
+    animation: bounce 1.5s infinite;
+  }
+  
+  @keyframes shine {
+    0% { transform: skewX(-20deg) translateX(-150%); }
+    80% { transform: skewX(-20deg) translateX(150%); }
+    100% { transform: skewX(-20deg) translateX(150%); }
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-25%); }
+  }
+  
+  .button-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+  }
