@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { RevealOnScroll } from "../RevealOnScroll";
 import emailjs from "emailjs-com";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { SiLeetcode, SiHackerrank } from "react-icons/si";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -89,6 +91,25 @@ export const Contact = () => {
               Send Message
             </button>
           </form>
+          
+          {/* Social Media Links */}
+          <div className="flex justify-center gap-6 mt-6">
+            <a href="https://github.com/janardan04" target="_blank" rel="noopener noreferrer" className="text-white hover:text--500 transition">
+              <FaGithub size={30} />
+            </a>
+            <a href="https://linkedin.com/in/janardan-borase-25a546232" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-500 transition">
+              <FaLinkedin size={30} />
+            </a>
+            <a href="https://instagram.com/janardanborse" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition">
+              <FaInstagram size={30} />
+            </a>
+            <a href="https://leetcode.com/Janardhan_04" target="_blank" rel="noopener noreferrer" className="text-white hover:text-orange-500 transition">
+              <SiLeetcode size={30} />
+            </a>
+            <a href="https://www.hackerrank.com/janardhanborse21" target="_blank" rel="noopener noreferrer" className="text-white hover:text-green-500 transition">
+              <SiHackerrank size={30} />
+            </a>
+          </div>
         </div>
       </RevealOnScroll>
     </section>
