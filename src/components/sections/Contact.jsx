@@ -100,8 +100,8 @@ export const Contact = () => {
             <a href="https://linkedin.com/in/janardan-borase-25a546232" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-500 transition">
               <FaLinkedin size={30} />
             </a>
-            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition">
-              <FaInstagram size={30} />
+            <a href="https://instagram.com/janardhan_borse" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#E1306C] transition">
+            <FaInstagram size={30} />
             </a>
             <a href="https://leetcode.com/Janardhan_04" target="_blank" rel="noopener noreferrer" className="text-white hover:text-orange-500 transition">
               <SiLeetcode size={30} />
