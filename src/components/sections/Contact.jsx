@@ -3,6 +3,7 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import emailjs from "emailjs-com";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { SiLeetcode, SiHackerrank } from "react-icons/si";
+import { SiQuora } from "react-icons/si";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -108,6 +109,9 @@ export const Contact = () => {
             </a>
             <a href="https://www.hackerrank.com/janardhanborse21" target="_blank" rel="noopener noreferrer" className="text-white hover:text-green-500 transition">
               <SiHackerrank size={30} />
+            </a>
+            <a href="https://www.quora.com/profile/Janardan-Borase" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-500 transition">
+              <SiQuora size={30} />
             </a>
           </div>
         </div>
