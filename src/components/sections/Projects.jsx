@@ -23,7 +23,7 @@ export const Projects = () => {
                 title: "Online Auction System",
                 description:
                   "Built an auction platform enabling real-time bidding for products. Features include user authentication, seller verification, auction time constraints, and dynamic bid increments. Implemented using Java technologies with MySQL backend.",
-                techStack: ["JSP", "Java", "Servlet", "MySQL", "HTML", "CSS"],
+                techStack: ["React js", "Firebase", "Css"],
               },
               {
                 title: "Farmer Assistant",
