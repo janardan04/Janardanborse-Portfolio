@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { RevealOnScroll } from "../RevealOnScroll";
-import emailjs from "emailjs-com";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { SiLeetcode, SiHackerrank } from "react-icons/si";
 import { SiQuora } from "react-icons/si";
@@ -12,21 +11,34 @@ export const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID, // Service ID from env
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // Template ID from env
-        e.target,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Public Key from env
-      )
-      .then((result) => {
-        alert("Message Sent!");
+    const formPayload = {
+      ...formData,
+      access_key: "875b73a7-0d20-47ae-b881-f698f6b49a6d", // Replace this with your Web3Forms access key
+    };
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formPayload),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        alert("Message Sent Successfully!");
         setFormData({ name: "", email: "", message: "" });
-      })
-      .catch(() => alert("Oops! Something went wrong. Please try again."));
+      } else {
+        alert("Oops! Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Oops! Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -35,8 +47,8 @@ export const Contact = () => {
       className="min-h-screen flex items-center justify-center py-20"
     >
       <RevealOnScroll>
-        <div className="px-4 w-full min-w-[300px] md:w-[500px] sm:w-2/3 p-6">
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-violet-500 to-cyan-300 bg-clip-text text-transparent text-center">
+        <div className="w-full max-w-md md:max-w-xl mx-auto px-4 py-6">
+          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-violet-600 to-cyan-500 dark:from-violet-500 dark:to-cyan-300 bg-clip-text text-transparent text-center">
             Get In Touch
           </h2>
           <form className="space-y-6" onSubmit={handleSubmit}>
@@ -47,7 +59,7 @@ export const Contact = () => {
                 name="name"
                 required
                 value={formData.name}
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-violet-500 focus:bg-violet-500/5"
+                className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded px-4 py-3 text-gray-900 dark:text-white transition focus:outline-none focus:border-violet-500 focus:bg-violet-50 dark:focus:bg-violet-500/5 placeholder:text-gray-400 dark:placeholder:text-gray-500"
                 placeholder="Name..."
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
@@ -62,7 +74,7 @@ export const Contact = () => {
                 name="email"
                 required
                 value={formData.email}
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-violet-500 focus:bg-violet-500/5"
+                className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded px-4 py-3 text-gray-900 dark:text-white transition focus:outline-none focus:border-violet-500 focus:bg-violet-50 dark:focus:bg-violet-500/5 placeholder:text-gray-400 dark:placeholder:text-gray-500"
                 placeholder="example@gmail.com"
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
@@ -77,7 +89,7 @@ export const Contact = () => {
                 required
                 rows={5}
                 value={formData.message}
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-violet-500 focus:bg-violet-500/5"
+                className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded px-4 py-3 text-gray-900 dark:text-white transition focus:outline-none focus:border-violet-500 focus:bg-violet-50 dark:focus:bg-violet-500/5 placeholder:text-gray-400 dark:placeholder:text-gray-500"
                 placeholder="Your Message..."
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
@@ -87,30 +99,30 @@ export const Contact = () => {
 
             <button
               type="submit"
-              className="w-full bg-violet-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]"
+              className="w-full bg-violet-600 dark:bg-violet-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]"
             >
               Send Message
             </button>
           </form>
-          
+
           {/* Social Media Links */}
           <div className="flex justify-center gap-6 mt-6">
-            <a href="https://github.com/janardan04" target="_blank" rel="noopener noreferrer" className="text-white hover:text--500 transition">
+            <a href="https://github.com/janardan04" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">
               <FaGithub size={30} />
             </a>
-            <a href="https://linkedin.com/in/janardan-borase-25a546232" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-500 transition">
+            <a href="https://linkedin.com/in/janardan-borase-25a546232" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500 transition">
               <FaLinkedin size={30} />
             </a>
-            <a href="https://instagram.com/janardhan_borse" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#E1306C] transition">
-            <FaInstagram size={30} />
+            <a href="https://instagram.com/janardhan_borse" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-[#E1306C] transition">
+              <FaInstagram size={30} />
             </a>
-            <a href="https://leetcode.com/Janardhan_04" target="_blank" rel="noopener noreferrer" className="text-white hover:text-orange-500 transition">
+            <a href="https://leetcode.com/Janardhan_04" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-orange-500 transition">
               <SiLeetcode size={30} />
             </a>
-            <a href="https://www.hackerrank.com/janardhanborse21" target="_blank" rel="noopener noreferrer" className="text-white hover:text-green-500 transition">
+            <a href="https://www.hackerrank.com/janardhanborse21" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-500 transition">
               <SiHackerrank size={30} />
             </a>
-            <a href="https://www.quora.com/profile/Janardan-Borase" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-500 transition">
+            <a href="https://www.quora.com/profile/Janardan-Borase" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 transition">
               <SiQuora size={30} />
             </a>
           </div>
