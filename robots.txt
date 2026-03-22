@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://janardan04.github.io/Janardanborse-Portfolio/sitemap.xml
