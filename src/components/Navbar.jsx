@@ -14,7 +14,7 @@ export const Navbar = ({ menuOpen, setMenuOpen, isDarkMode, setIsDarkMode }) => 
     const fetchCount = async () => {
       try {
         const res = await fetch(
-          "https://api.counterapi.dev/v1/janardan04-portfolio/visits/up"
+          "https://api.counterapi.dev/v2/janardan04-portfolio/visits/up"
         );
         const data = await res.json();
         setVisitorCount(data.count);
@@ -66,7 +66,7 @@ export const Navbar = ({ menuOpen, setMenuOpen, isDarkMode, setIsDarkMode }) => 
 
           {/* Theme Toggle & Mobile Menu Container */}
           <div className="flex items-center space-x-4 md:hidden">
-            <button 
+            <button
               onClick={() => setIsDarkMode((prev) => !prev)}
               className="p-2 rounded-full bg-gray-200 dark:bg-white/10 text-gray-800 dark:text-yellow-400 transition"
               aria-label="Toggle Theme"
@@ -112,8 +112,8 @@ export const Navbar = ({ menuOpen, setMenuOpen, isDarkMode, setIsDarkMode }) => 
               {" "}
               Contact{" "}
             </a>
-            
-            <button 
+
+            <button
               onClick={() => setIsDarkMode((prev) => !prev)}
               className="p-2 rounded-full bg-gray-200 dark:bg-white/10 text-gray-800 dark:text-yellow-400 hover:scale-110 transition-transform"
               aria-label="Toggle Theme"
