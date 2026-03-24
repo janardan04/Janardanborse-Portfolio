@@ -14,7 +14,7 @@ export const Navbar = ({ menuOpen, setMenuOpen, isDarkMode, setIsDarkMode }) => 
     const fetchCount = async () => {
       try {
         const res = await fetch(
-          "https://api.counterapi.dev/v2/janardan04-portfolio/visits/up"
+          "https://api.counterapi.dev/v1/janardan04-portfolio/visits/up"
         );
         const data = await res.json();
         setVisitorCount(data.count);
